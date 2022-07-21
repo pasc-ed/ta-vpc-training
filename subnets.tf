@@ -7,6 +7,15 @@ resource "aws_subnet" "public" {
   }
 }
 
+resource "aws_subnet" "private" {
+  vpc_id     = aws_vpc.lab_vpc.id
+  cidr_block = var.cidr_private
+
+  tags = {
+    Name = "private"
+  }
+}
+
 resource "aws_subnet" "data" {
   vpc_id     = aws_vpc.lab_vpc.id
   cidr_block = var.cidr_data
